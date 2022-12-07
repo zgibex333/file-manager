@@ -5,8 +5,10 @@ import { join } from "path";
 
 export const removeFile = async (currentDir, cmd) => {
   let targetPath = cmd.substr(3);
-  let newPath = join(currentDir, targetPath);
-  if (targetPath.includes(":")) newPath = targetPath;
+  //   let newPath = join(currentDir, targetPath);
+  //   if (targetPath.includes(":")) newPath = targetPath;
+  //   if (targetPath[0] === "/" || targetPath[0] === "\\") newPath = targetPath;
+  const newPath = createCorrectPath(currentDir, targetPath);
   const exists = await isAccessible(newPath);
   if (!exists) {
     console.log(MESSAGES.INVALID);

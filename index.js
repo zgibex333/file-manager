@@ -1,17 +1,17 @@
 import * as readline from "node:readline";
-import { stdin as input, stdout as output } from "node:process";
-import { readdir } from "fs/promises";
-import { MESSAGES } from "./constants.js";
 import os from "os";
+import { stdin as input, stdout as output } from "node:process";
+import { MESSAGES } from "./constants.js";
 import { moveUp } from "./dirMoves/moveUp.js";
 import { splitStringBySpace } from "./utils/splitStringBySpace.js";
 import { moveToPath } from "./dirMoves/moveToPath.js";
 import { printFilesInDir } from "./dirMoves/printFilesInDir.js";
-import { removeQuotes } from "./utils/removeQuotes.js";
 import { readFileToConsole } from "./filesActions/readFileToConsole.js";
 import { createEmptyFile } from "./filesActions/createEmptyFile.js";
 import { renameFile } from "./filesActions/renameFile.js";
 import { removeFile } from "./filesActions/removeFile.js";
+import { makeFileCopy } from "./filesActions/makeFileCopy.js";
+import { moveFile } from "./filesActions/moveFile.js";
 
 const rl = readline.createInterface({ input, output });
 const username = process.argv[3] || "Incognito";
@@ -22,7 +22,6 @@ console.log(`${MESSAGES.WELCOME}, ${username}\n`);
 console.log(`${MESSAGES.CURRENT_PATH} ${currentDir}\n`);
 
 rl.on("line", async (data) => {
-  data = removeQuotes(data);
   // move up
   if (data === "up") {
     currentDir = await moveUp(currentDir);
@@ -48,14 +47,22 @@ rl.on("line", async (data) => {
     await renameFile(currentDir, data);
   }
   // copy file
+  else if (splitStringBySpace(data)[0] === "cp") {
+    await makeFileCopy(currentDir, data);
+  }
   // move file
+  else if (splitStringBySpace(data)[0] === "mv") {
+    await moveFile(currentDir, data);
+  }
   // delete file
   else if (splitStringBySpace(data)[0] === "rm") {
     await removeFile(currentDir, data);
   }
   // exit
   else if (data === ".exit") {
-    console.log("Byeeeeee");
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
+    console.log("\nByeeeeee");
     process.exit();
   }
   // invalid input
@@ -66,7 +73,9 @@ rl.on("line", async (data) => {
   console.log(`${MESSAGES.CURRENT_PATH} ${currentDir}\n`);
 })
   // exit
-  .on("SIGINT", () => {
+  .on("SIGINT", (data) => {
+    process.stdout.clearLine();
+    process.stdout.cursorTo(0);
     console.log("Byeeeeee");
     process.exit();
   });

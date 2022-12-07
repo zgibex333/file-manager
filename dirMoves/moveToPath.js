@@ -1,15 +1,15 @@
 import { isDirectory } from "../utils/isDirectory.js";
 import { join } from "node:path";
+import path from "node:path";
+import { createCorrectPath } from "../utils/createCorrectPath.js";
 
 export const moveToPath = async (currentDir, cmd) => {
   let targetPath = cmd.substr(3);
-  let newPath = join(currentDir, targetPath);
-  //  check disk change
-  if (targetPath.includes(":")) newPath = targetPath;
+  const newPath = createCorrectPath(currentDir, targetPath);
   const directory = await isDirectory(newPath);
   if (!directory) {
-    console.log('Invalid input');
+    console.log("Invalid input");
     return null;
   }
-  return newPath;
+  return path.resolve(newPath);
 };
