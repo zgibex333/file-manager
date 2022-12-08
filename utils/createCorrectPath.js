@@ -7,6 +7,5 @@ export const createCorrectPath = (currentDir, targetPath) => {
   //  check disk change
   if (targetPath.includes(":")) newPath = targetPath;
   if (targetPath[0] === "/" || targetPath[0] === "\\") newPath = targetPath;
-  console.log("newPath", newPath);
   return newPath;
 };

@@ -7,7 +7,6 @@ import { divideDoublePaths } from "../utils/divideDoublePaths.js";
 
 export const renameFile = async (currentDir, cmd) => {
   const { paths, isCorrect } = divideDoublePaths(cmd, 3);
-  console.log(paths);
   if (!isCorrect) {
     console.log(MESSAGES.INVALID);
     return;

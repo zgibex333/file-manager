@@ -6,6 +6,5 @@ export const divideDoublePaths = (cmd, number) => {
   } else {
     paths = cmd.split(" ");
   }
-  console.log(paths.length);
   return { paths, isCorrect: paths.length === 2 };
 };

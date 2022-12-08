@@ -7,7 +7,6 @@ import path from "node:path";
 
 export const makeFileCopy = async (currentDir, cmd) => {
   const { paths, isCorrect } = divideDoublePaths(cmd, 3);
-  console.log(isCorrect, "isCorrect");
   if (!isCorrect) {
     console.log(MESSAGES.INVALID);
     return;

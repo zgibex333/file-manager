@@ -13,7 +13,7 @@ export const readFileToConsole = async (currentDir, cmd) => {
     return;
   }
   try {
-    const readStream = await createReadStream(newPath);
+    const readStream = createReadStream(newPath);
     for await (const chunk of readStream) {
       console.log(chunk.toString());
     }

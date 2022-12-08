@@ -3,6 +3,7 @@ export const MESSAGES = {
   CURRENT_PATH: "You are currently in",
   INVALID: "Invalid input",
   ERROR: "Operation failed",
+  BYE: (username) => `Thank you for using File Manager, ${username}, goodbye!`,
 };
 
 // export const PATTERNS = {
