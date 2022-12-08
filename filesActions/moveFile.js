@@ -1,5 +1,5 @@
 import { createReadStream, createWriteStream } from "node:fs";
-import { MESSAGES } from "../constants.js";
+import { MESSAGES } from "../constants/constants.js";
 import { createCorrectPath } from "../utils/createCorrectPath.js";
 import { pipeline } from "node:stream/promises";
 import { divideDoublePaths } from "../utils/divideDoublePaths.js";

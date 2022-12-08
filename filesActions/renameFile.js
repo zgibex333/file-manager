@@ -1,7 +1,6 @@
 import { rename } from "node:fs/promises";
-import { MESSAGES } from "../constants.js";
+import { MESSAGES } from "../constants/constants.js";
 import { isAccessible } from "../utils/isAccessible.js";
-import { join } from "node:path";
 import { createCorrectPath } from "../utils/createCorrectPath.js";
 import { divideDoublePaths } from "../utils/divideDoublePaths.js";
 

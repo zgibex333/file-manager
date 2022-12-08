@@ -1,7 +1,7 @@
 import { pipeline } from "node:stream/promises";
 import zlib from "node:zlib";
 import { createWriteStream, createReadStream } from "node:fs";
-import { MESSAGES } from "../constants.js";
+import { MESSAGES } from "../constants/constants.js";
 import { divideDoublePaths } from "../utils/divideDoublePaths.js";
 import { createCorrectPath } from "../utils/createCorrectPath.js";
 

@@ -1,13 +1,10 @@
-import { MESSAGES } from "../constants.js";
+import { MESSAGES } from "../constants/constants.js";
 import { isAccessible } from "../utils/isAccessible.js";
 import { rm } from "fs/promises";
-import { join } from "path";
+import { createCorrectPath } from "../utils/createCorrectPath.js";
 
 export const removeFile = async (currentDir, cmd) => {
   let targetPath = cmd.substr(3);
-  //   let newPath = join(currentDir, targetPath);
-  //   if (targetPath.includes(":")) newPath = targetPath;
-  //   if (targetPath[0] === "/" || targetPath[0] === "\\") newPath = targetPath;
   const newPath = createCorrectPath(currentDir, targetPath);
   const exists = await isAccessible(newPath);
   if (!exists) {

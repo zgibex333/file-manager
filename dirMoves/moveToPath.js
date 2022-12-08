@@ -1,5 +1,4 @@
 import { isDirectory } from "../utils/isDirectory.js";
-import { join } from "node:path";
 import path from "node:path";
 import { createCorrectPath } from "../utils/createCorrectPath.js";
 

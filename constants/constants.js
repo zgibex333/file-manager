@@ -5,7 +5,3 @@ export const MESSAGES = {
   ERROR: "Operation failed",
   BYE: (username) => `Thank you for using File Manager, ${username}, goodbye!`,
 };
-
-// export const PATTERNS = {
-//   NEW_FILE: /^[^</*?"\\>:|]+$/,
-// };

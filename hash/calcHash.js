@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { createReadStream } from "node:fs";
-import { MESSAGES } from "../constants.js";
+import { MESSAGES } from "../constants/constants.js";
 import { createCorrectPath } from "../utils/createCorrectPath.js";
 import { isFile } from "../utils/isFile.js";
 

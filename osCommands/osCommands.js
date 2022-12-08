@@ -1,6 +1,7 @@
-import { MESSAGES } from "../constants.js";
+import { MESSAGES } from "../constants/constants.js";
 import { getArchitecture } from "./getArchitecture.js";
 import { getCPUS } from "./getCPUS.js";
+import { getEOL } from "./getEOL.js";
 import { getHomeDir } from "./getHomeDir.js";
 import { getUserName } from "./getUserName.js";
 

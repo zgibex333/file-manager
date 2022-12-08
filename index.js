@@ -1,7 +1,7 @@
 import * as readline from "node:readline";
 import os from "os";
 import { stdin as input, stdout as output } from "node:process";
-import { MESSAGES } from "./constants.js";
+import { MESSAGES } from "./constants/constants.js";
 import { moveUp } from "./dirMoves/moveUp.js";
 import { splitStringBySpace } from "./utils/splitStringBySpace.js";
 import { moveToPath } from "./dirMoves/moveToPath.js";
@@ -93,7 +93,7 @@ rl.on("line", async (data) => {
   console.log(`${MESSAGES.CURRENT_PATH} ${currentDir}\n`);
 })
   // exit
-  .on("SIGINT", (data) => {
+  .on("SIGINT", () => {
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
     console.log(MESSAGES.BYE(username));
