@@ -99,3 +99,5 @@ rl.on("line", async (data) => {
     console.log(MESSAGES.BYE(username));
     process.exit();
   });
+
+// test before submit
